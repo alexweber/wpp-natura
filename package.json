@@ -1,8 +1,8 @@
 {
-  "name": "mapa-do-cle",
+  "name": "wpp-natura",
   "version": "1.0.0",
   "private": true,
-  "description": "Static team map for Clemente.",
+  "description": "Poczinho de app de mapa do Clemente.",
   "scripts": {
     "dev": "python3 -m http.server 8000",
     "check": "node --check includes/app.js"
