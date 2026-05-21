@@ -95,7 +95,6 @@ button,
 }
 
 .maplibregl-control-container {
-  position: relative;
   z-index: 2;
 }
 
