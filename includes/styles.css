@@ -1,0 +1,294 @@
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../assets/fonts/Geist/Geist-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Geist";
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../assets/fonts/Geist/Geist-Italic-VariableFont_wght.ttf") format("truetype");
+}
+
+:root {
+  color-scheme: light;
+  --ink: #1c1c1c;
+  --muted: #5b6475;
+  --panel: #ffffff;
+  --accent: #0867d7;
+  --accent-dark: #054c9f;
+  --border: rgba(23, 32, 51, 0.14);
+  --shadow: 0 18px 50px rgba(18, 27, 44, 0.18);
+  --circle-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Ccircle cx='5' cy='5' r='5' fill='%231c1c1c'/%3E%3C/svg%3E") 5 5, auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
+  color: var(--ink);
+  background: #dce7f5;
+  cursor: var(--circle-cursor);
+}
+
+button,
+input,
+select,
+textarea,
+.maplibregl-map,
+.maplibregl-ctrl,
+.maplibregl-popup {
+  font-family: inherit;
+}
+
+body {
+  overflow: hidden;
+}
+
+a,
+button,
+.maplibregl-canvas,
+.maplibregl-canvas-container,
+.maplibregl-interactive,
+.maplibregl-ctrl,
+.maplibregl-popup-close-button {
+  cursor: var(--circle-cursor) !important;
+}
+
+#map {
+  position: fixed;
+  inset: 0;
+  isolation: isolate;
+}
+
+#map::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image: url("../assets/bg-linhas.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  mix-blend-mode: multiply;
+  opacity: 0.48;
+}
+
+.maplibregl-canvas-container {
+  z-index: 0;
+}
+
+.maplibregl-control-container {
+  position: relative;
+  z-index: 2;
+}
+
+.maplibregl-popup {
+  max-width: 300px;
+  z-index: 3;
+}
+
+.maplibregl-popup .maplibregl-popup-content {
+  animation: popup-enter 180ms ease-out both;
+  transform-origin: center bottom;
+}
+
+.maplibregl-popup.is-closing .maplibregl-popup-content {
+  animation: popup-exit 260ms ease-in both;
+}
+
+.maplibregl-popup.is-closing {
+  pointer-events: none;
+}
+
+.maplibregl-popup-content {
+  color: var(--ink);
+  background: #fdfdfd;
+  padding: 0;
+  border: 0;
+  border-radius: 18px;
+  box-shadow:
+    0 28px 80px rgba(28, 28, 28, 0.36),
+    0 10px 26px rgba(28, 28, 28, 0.24);
+  overflow: hidden;
+}
+
+.maplibregl-popup-tip {
+  display: none;
+}
+
+.person-card {
+  width: 288px;
+  padding: 6px;
+  background: #fdfdfd;
+  border-radius: 18px;
+}
+
+.person-card .photo {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 1 / 1.08;
+  overflow: hidden;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 30% 20%, rgba(28, 28, 28, 0.14), transparent 30%),
+    radial-gradient(circle at 76% 72%, rgba(28, 28, 28, 0.12), transparent 26%),
+    #e8e6df;
+  border-radius: 12px;
+  font-size: 54px;
+  font-weight: 650;
+  line-height: 1;
+}
+
+.person-card .photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.person-card .content {
+  padding: 15px 18px 16px;
+}
+
+.person-card h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 520;
+  line-height: 1.2;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+}
+
+.person-card p {
+  margin: 0;
+}
+
+.person-card .role {
+  margin-top: 8px;
+  font-size: 17px;
+  font-weight: 360;
+  line-height: 1.18;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.person-card .meta {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 16px;
+  font-weight: 380;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.person-card .label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.person-card .linkedin {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  text-decoration: none;
+}
+
+.person-card .linkedin img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.person-card .footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 16px;
+  width: 100%;
+}
+
+.maplibregl-popup-close-button {
+  top: 12px;
+  right: 12px;
+  width: 26px;
+  height: 26px;
+  color: #fdfdfd;
+  font-size: 20px;
+  line-height: 24px;
+  text-shadow: 0 1px 3px rgba(28, 28, 28, 0.55);
+}
+
+.maplibregl-ctrl-group {
+  border-radius: 8px;
+}
+
+@keyframes popup-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes popup-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(10px) scale(0.92);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .maplibregl-popup .maplibregl-popup-content,
+  .maplibregl-popup.is-closing .maplibregl-popup-content {
+    animation: none;
+  }
+}
+
+@media (pointer: coarse) {
+  html,
+  body,
+  a,
+  button,
+  .maplibregl-canvas,
+  .maplibregl-canvas-container,
+  .maplibregl-interactive,
+  .maplibregl-ctrl,
+  .maplibregl-popup-close-button {
+    cursor: auto !important;
+  }
+}
