@@ -1,0 +1,905 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mapa Global da Equipe</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%230867d7'/%3E%3Ccircle cx='16' cy='16' r='6' fill='white'/%3E%3C/svg%3E"
+    >
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/maplibre-gl@5.5.0/dist/maplibre-gl.css"
+    >
+    <style>
+      @font-face {
+        font-family: "Geist";
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+        src: url("fonts/Geist/Geist-VariableFont_wght.ttf") format("truetype");
+      }
+
+      @font-face {
+        font-family: "Geist";
+        font-style: italic;
+        font-weight: 100 900;
+        font-display: swap;
+        src: url("fonts/Geist/Geist-Italic-VariableFont_wght.ttf") format("truetype");
+      }
+
+      :root {
+        color-scheme: light;
+        --ink: #1c1c1c;
+        --muted: #5b6475;
+        --panel: #ffffff;
+        --accent: #0867d7;
+        --accent-dark: #054c9f;
+        --border: rgba(23, 32, 51, 0.14);
+        --shadow: 0 18px 50px rgba(18, 27, 44, 0.18);
+        --circle-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Ccircle cx='5' cy='5' r='5' fill='%231c1c1c'/%3E%3C/svg%3E") 5 5, auto;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
+        color: var(--ink);
+        background: #dce7f5;
+        cursor: var(--circle-cursor);
+      }
+
+      button,
+      input,
+      select,
+      textarea,
+      .maplibregl-map,
+      .maplibregl-ctrl,
+      .maplibregl-popup {
+        font-family: inherit;
+      }
+
+      body {
+        overflow: hidden;
+      }
+
+      a,
+      button,
+      .maplibregl-canvas,
+      .maplibregl-canvas-container,
+      .maplibregl-interactive,
+      .maplibregl-ctrl,
+      .maplibregl-popup-close-button {
+        cursor: var(--circle-cursor) !important;
+      }
+
+      #map {
+        position: fixed;
+        inset: 0;
+        isolation: isolate;
+      }
+
+      #map::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background-image: url("bg-linhas.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        mix-blend-mode: multiply;
+        opacity: 0.48;
+      }
+
+      .maplibregl-canvas-container {
+        z-index: 0;
+      }
+
+      .maplibregl-control-container {
+        position: relative;
+        z-index: 2;
+      }
+
+      .maplibregl-popup {
+        max-width: 300px;
+        z-index: 3;
+      }
+
+      .maplibregl-popup .maplibregl-popup-content {
+        animation: popup-enter 180ms ease-out both;
+        transform-origin: center bottom;
+      }
+
+      .maplibregl-popup.is-closing .maplibregl-popup-content {
+        animation: popup-exit 260ms ease-in both;
+      }
+
+      .maplibregl-popup.is-closing {
+        pointer-events: none;
+      }
+
+      .maplibregl-popup-content {
+        color: var(--ink);
+        background: #fdfdfd;
+        padding: 0;
+        border: 0;
+        border-radius: 18px;
+        box-shadow:
+          0 28px 80px rgba(28, 28, 28, 0.36),
+          0 10px 26px rgba(28, 28, 28, 0.24);
+        overflow: hidden;
+      }
+
+      .maplibregl-popup-tip {
+        display: none;
+      }
+
+      .person-card {
+        width: 288px;
+        padding: 6px;
+        background: #fdfdfd;
+        border-radius: 18px;
+      }
+
+      .person-card .photo {
+        display: grid;
+        place-items: center;
+        width: 100%;
+        aspect-ratio: 1 / 1.08;
+        overflow: hidden;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 30% 20%, rgba(28, 28, 28, 0.14), transparent 30%),
+          radial-gradient(circle at 76% 72%, rgba(28, 28, 28, 0.12), transparent 26%),
+          #e8e6df;
+        border-radius: 12px;
+        font-size: 54px;
+        font-weight: 650;
+        line-height: 1;
+      }
+
+      .person-card .photo img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .person-card .content {
+        padding: 15px 18px 16px;
+      }
+
+      .person-card h2 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 520;
+        line-height: 1.2;
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+      }
+
+      .person-card p {
+        margin: 0;
+      }
+
+      .person-card .role {
+        margin-top: 8px;
+        font-size: 17px;
+        font-weight: 360;
+        line-height: 1.18;
+        color: var(--ink);
+        overflow-wrap: anywhere;
+      }
+
+      .person-card .meta {
+        flex: 1 1 auto;
+        min-width: 0;
+        font-size: 16px;
+        font-weight: 380;
+        line-height: 1.35;
+        overflow-wrap: anywhere;
+      }
+
+      .person-card .label {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+      }
+
+      .person-card .linkedin {
+        flex: 0 0 auto;
+        display: grid;
+        place-items: center;
+        width: 20px;
+        height: 20px;
+        text-decoration: none;
+      }
+
+      .person-card .linkedin img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .person-card .footer {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 14px;
+        margin-top: 16px;
+        width: 100%;
+      }
+
+      .maplibregl-popup-close-button {
+        top: 12px;
+        right: 12px;
+        width: 26px;
+        height: 26px;
+        color: #fdfdfd;
+        font-size: 20px;
+        line-height: 24px;
+        text-shadow: 0 1px 3px rgba(28, 28, 28, 0.55);
+      }
+
+      .maplibregl-ctrl-group {
+        border-radius: 8px;
+      }
+
+      @keyframes popup-enter {
+        from {
+          opacity: 0;
+          transform: translateY(8px) scale(0.96);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @keyframes popup-exit {
+        from {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+
+        to {
+          opacity: 0;
+          transform: translateY(10px) scale(0.92);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .maplibregl-popup .maplibregl-popup-content,
+        .maplibregl-popup.is-closing .maplibregl-popup-content {
+          animation: none;
+        }
+      }
+
+      @media (pointer: coarse) {
+        html,
+        body,
+        a,
+        button,
+        .maplibregl-canvas,
+        .maplibregl-canvas-container,
+        .maplibregl-interactive,
+        .maplibregl-ctrl,
+        .maplibregl-popup-close-button {
+          cursor: auto !important;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <main id="map" aria-label="Mapa-múndi ampliável com localizações da equipe global"></main>
+
+    <script src="https://unpkg.com/maplibre-gl@5.5.0/dist/maplibre-gl.js"></script>
+    <script>
+      const staffDataUrl = "staff.json";
+      const staffPhotoBaseUrl = "photos/";
+      const defaultStaffPhoto = `${staffPhotoBaseUrl}foto-padrao.png`;
+      const popupCloseDuration = 260;
+      const markerColor = "#1c1c1c";
+      const markerFocusExpression = ["coalesce", ["feature-state", "focus"], 0];
+      const markerFocusDuration = 180;
+      const clusterRadiusExpression = [
+        "step",
+        ["get", "point_count"],
+        13,
+        4,
+        15,
+        8,
+        17,
+      ];
+      const interactiveClusterRadiusExpression = [
+        "*",
+        ["+", 1, ["*", markerFocusExpression, 0.06]],
+        clusterRadiusExpression,
+      ];
+      const interactivePersonRadiusExpression = [
+        "+",
+        6,
+        markerFocusExpression,
+      ];
+      let activePopup = null;
+      let activeFeature = null;
+      let hoveredFeature = null;
+      const markerFocusAnimations = new Map();
+      const neutralMapStyle = {
+        version: 8,
+        glyphs: "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
+        sources: {
+          "carto-light": {
+            type: "raster",
+            tiles: [
+              "https://a.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png",
+              "https://b.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png",
+              "https://c.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png",
+              "https://d.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png",
+            ],
+            tileSize: 256,
+            attribution:
+              '&copy; colaboradores do <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+          },
+        },
+        layers: [
+          {
+            id: "carto-light",
+            type: "raster",
+            source: "carto-light",
+          },
+        ],
+      };
+
+      const map = new maplibregl.Map({
+        container: "map",
+        style: neutralMapStyle,
+        center: [12, 18],
+        zoom: 1.25,
+        minZoom: 1,
+        maxZoom: 9,
+        attributionControl: false,
+        locale: {
+          "AttributionControl.ToggleAttribution": "Alternar atribuição",
+          "FullscreenControl.Enter": "Entrar em tela cheia",
+          "FullscreenControl.Exit": "Sair da tela cheia",
+          "NavigationControl.ZoomIn": "Aproximar",
+          "NavigationControl.ZoomOut": "Afastar",
+          "Popup.Close": "Fechar janela",
+        },
+      });
+
+      localizeMapAccessibility();
+      map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-right");
+      map.addControl(new maplibregl.FullscreenControl(), "bottom-right");
+      map.addControl(
+        new maplibregl.AttributionControl({ compact: true }),
+        "bottom-left"
+      );
+
+      map.on("load", async () => {
+        let staff;
+
+        try {
+          staff = await loadStaff();
+        } catch (error) {
+          console.error(error);
+          return;
+        }
+
+        map.addSource("staff", {
+          type: "geojson",
+          data: buildStaffGeoJson(staff),
+          cluster: true,
+          clusterMaxZoom: 5,
+          clusterRadius: 48,
+        });
+
+        map.addLayer({
+          id: "clusters",
+          type: "circle",
+          source: "staff",
+          filter: ["has", "point_count"],
+          paint: {
+            "circle-color": "rgba(255, 255, 255, 0)",
+            "circle-opacity": 0,
+            "circle-radius": [
+              "*",
+              ["+", 1, ["*", markerFocusExpression, 0.06]],
+              ["*", 0.2, clusterRadiusExpression],
+            ],
+            "circle-stroke-color": markerColor,
+            "circle-stroke-opacity": 0,
+            "circle-stroke-width": ["+", 1, markerFocusExpression],
+            "circle-translate": [0, -24],
+          },
+        });
+
+        map.addLayer({
+          id: "cluster-count",
+          type: "symbol",
+          source: "staff",
+          filter: ["has", "point_count"],
+          layout: {
+            "text-field": ["get", "point_count_abbreviated"],
+            "text-font": ["Open Sans Semibold"],
+            "text-size": 11,
+          },
+          paint: {
+            "text-color": markerColor,
+            "text-opacity": 0,
+            "text-translate": [0, -24],
+            "text-halo-color": "rgba(253, 253, 253, 0.75)",
+            "text-halo-width": ["*", markerFocusExpression, 0.8],
+          },
+        });
+
+        map.addLayer({
+          id: "unclustered-person",
+          type: "circle",
+          source: "staff",
+          filter: ["!", ["has", "point_count"]],
+          paint: {
+            "circle-color": "rgba(255, 255, 255, 0)",
+            "circle-opacity": 0,
+            "circle-radius": ["+", 1, markerFocusExpression],
+            "circle-stroke-color": markerColor,
+            "circle-stroke-opacity": 0,
+            "circle-stroke-width": ["+", 1, markerFocusExpression],
+            "circle-translate": [0, -24],
+          },
+        });
+
+        animateMarkersIn();
+
+        map.on("click", "clusters", async (event) => {
+          const features = map.queryRenderedFeatures(event.point, {
+            layers: ["clusters"],
+          });
+          const clusterId = features[0].properties.cluster_id;
+          const source = map.getSource("staff");
+          const zoom = await source.getClusterExpansionZoom(clusterId);
+
+          map.easeTo({
+            center: features[0].geometry.coordinates,
+            zoom,
+            duration: 650,
+          });
+        });
+
+        map.on("click", "unclustered-person", (event) => {
+          event.preventDefault();
+          const feature = event.features[0];
+          const coordinates = feature.geometry.coordinates.slice();
+          const { name, location, job, photo, linkedin } = feature.properties;
+
+          while (Math.abs(event.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += event.lngLat.lng > coordinates[0] ? 360 : -360;
+          }
+
+          closeActivePopup();
+          setActiveFeature(feature);
+
+          const popup = new maplibregl.Popup({
+            anchor: getPopupAnchor(event.point),
+            closeOnClick: false,
+            maxWidth: "288px",
+            offset: 16,
+          });
+
+          popup
+            .setLngLat(coordinates)
+            .setHTML(renderPersonCard({ name, location, job, photo, linkedin }))
+            .addTo(map);
+
+          activePopup = popup;
+          bindPopupCloseAnimation(popup);
+        });
+
+        map.on("click", (event) => {
+          const clickedPopupOrMarker = map.queryRenderedFeatures(event.point, {
+            layers: ["clusters", "unclustered-person"],
+          }).length;
+
+          if (clickedPopupOrMarker) {
+            return;
+          }
+
+          closeActivePopup();
+        });
+
+        map.on("mouseenter", "clusters", (event) => {
+          setHoveredFeature(event.features[0]);
+        });
+
+        map.on("mouseleave", "clusters", () => {
+          clearHoveredFeature();
+        });
+
+        map.on("mouseenter", "unclustered-person", (event) => {
+          setHoveredFeature(event.features[0]);
+        });
+
+        map.on("mouseleave", "unclustered-person", () => {
+          clearHoveredFeature();
+        });
+      });
+
+      async function loadStaff() {
+        const response = await fetch(staffDataUrl);
+
+        if (!response.ok) {
+          throw new Error(`Não foi possível carregar ${staffDataUrl}: ${response.status}`);
+        }
+
+        const staff = await response.json();
+
+        if (!Array.isArray(staff)) {
+          throw new Error(`${staffDataUrl} deve conter um array JSON`);
+        }
+
+        return staff;
+      }
+
+      function buildStaffGeoJson(staff) {
+        return {
+          type: "FeatureCollection",
+          features: staff.map((person, index) => ({
+            type: "Feature",
+            id: index,
+            geometry: {
+              type: "Point",
+              coordinates: person.coordinates,
+            },
+            properties: {
+              name: person.name,
+              location: person.location,
+              country: person.country,
+              region: person.region,
+              job: person.job,
+              photo: resolveStaffPhotoUrl(person.photo),
+              linkedin: person.linkedin || "",
+            },
+          })),
+        };
+      }
+
+      function setHoveredFeature(feature) {
+        if (!feature || feature.id === undefined) {
+          return;
+        }
+
+        clearHoveredFeature();
+        hoveredFeature = feature.id;
+        animateMarkerFocus(hoveredFeature, 1);
+      }
+
+      function clearHoveredFeature() {
+        if (hoveredFeature === null) {
+          return;
+        }
+
+        if (hoveredFeature !== activeFeature) {
+          animateMarkerFocus(hoveredFeature, 0);
+        }
+        hoveredFeature = null;
+      }
+
+      function setActiveFeature(feature) {
+        if (!feature || feature.id === undefined) {
+          return;
+        }
+
+        clearActiveFeature();
+        activeFeature = feature.id;
+        animateMarkerFocus(activeFeature, 1);
+      }
+
+      function clearActiveFeature() {
+        if (activeFeature === null) {
+          return;
+        }
+
+        if (activeFeature !== hoveredFeature) {
+          animateMarkerFocus(activeFeature, 0);
+        }
+        activeFeature = null;
+      }
+
+      function animateMarkerFocus(featureId, target) {
+        const state = map.getFeatureState({
+          source: "staff",
+          id: featureId,
+        });
+        const startValue = typeof state.focus === "number" ? state.focus : 0;
+        const startTime = performance.now();
+        const animationId = Symbol();
+
+        markerFocusAnimations.set(featureId, animationId);
+
+        const tick = (now) => {
+          if (markerFocusAnimations.get(featureId) !== animationId) {
+            return;
+          }
+
+          const progress = clamp01((now - startTime) / markerFocusDuration);
+          const easedProgress = easeInOutCubic(progress);
+          const focus = startValue + (target - startValue) * easedProgress;
+
+          map.setFeatureState(
+            {
+              source: "staff",
+              id: featureId,
+            },
+            {
+              focus,
+            }
+          );
+
+          if (progress < 1) {
+            requestAnimationFrame(tick);
+            return;
+          }
+
+          map.setFeatureState(
+            {
+              source: "staff",
+              id: featureId,
+            },
+            {
+              focus: target,
+            }
+          );
+          markerFocusAnimations.delete(featureId);
+        };
+
+        requestAnimationFrame(tick);
+      }
+
+      function resolveStaffPhotoUrl(photo) {
+        if (!photo) {
+          return defaultStaffPhoto;
+        }
+
+        if (/^(https?:|data:|\/)/.test(photo) || photo.includes("/")) {
+          return photo;
+        }
+
+        return `${staffPhotoBaseUrl}${photo}`;
+      }
+
+      function animateMarkersIn() {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          setFinalMarkerPaint();
+          return;
+        }
+
+        const duration = 720;
+        const start = performance.now();
+
+        const tick = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = Math.max(0, easeOutBack(progress));
+          const opacity = clamp01(easeOutCubic(progress));
+          const translateY = -24 * (1 - clamp01(easeOutBounce(progress)));
+
+          map.setPaintProperty("clusters", "circle-radius", [
+            "*",
+            Math.max(0.2, eased),
+            clusterRadiusExpression,
+          ]);
+          map.setPaintProperty("clusters", "circle-opacity", opacity);
+          map.setPaintProperty("clusters", "circle-stroke-opacity", opacity);
+          map.setPaintProperty("clusters", "circle-translate", [0, translateY]);
+
+          map.setPaintProperty("cluster-count", "text-opacity", opacity);
+          map.setPaintProperty("cluster-count", "text-translate", [0, translateY]);
+
+          map.setPaintProperty("unclustered-person", "circle-radius", 6 * Math.max(0.2, eased));
+          map.setPaintProperty("unclustered-person", "circle-opacity", opacity);
+          map.setPaintProperty("unclustered-person", "circle-stroke-opacity", opacity);
+          map.setPaintProperty("unclustered-person", "circle-translate", [0, translateY]);
+
+          if (progress < 1) {
+            requestAnimationFrame(tick);
+            return;
+          }
+
+          setFinalMarkerPaint();
+        };
+
+        requestAnimationFrame(tick);
+      }
+
+      function setFinalMarkerPaint() {
+        map.setPaintProperty("clusters", "circle-radius", interactiveClusterRadiusExpression);
+        map.setPaintProperty("clusters", "circle-opacity", 1);
+        map.setPaintProperty("clusters", "circle-stroke-opacity", 1);
+        map.setPaintProperty("clusters", "circle-translate", [0, 0]);
+        map.setPaintProperty("cluster-count", "text-opacity", 1);
+        map.setPaintProperty("cluster-count", "text-translate", [0, 0]);
+        map.setPaintProperty("unclustered-person", "circle-radius", interactivePersonRadiusExpression);
+        map.setPaintProperty("unclustered-person", "circle-opacity", 1);
+        map.setPaintProperty("unclustered-person", "circle-stroke-opacity", 1);
+        map.setPaintProperty("unclustered-person", "circle-translate", [0, 0]);
+      }
+
+      function easeOutCubic(value) {
+        return 1 - Math.pow(1 - value, 3);
+      }
+
+      function easeInOutCubic(value) {
+        return value < 0.5
+          ? 4 * value * value * value
+          : 1 - Math.pow(-2 * value + 2, 3) / 2;
+      }
+
+      function clamp01(value) {
+        return Math.min(Math.max(value, 0), 1);
+      }
+
+      function easeOutBack(value) {
+        const overshoot = 1.45;
+        return 1 + (overshoot + 1) * Math.pow(value - 1, 3) + overshoot * Math.pow(value - 1, 2);
+      }
+
+      function easeOutBounce(value) {
+        const bounce = 7.5625;
+        const divisor = 2.75;
+
+        if (value < 1 / divisor) {
+          return bounce * value * value;
+        }
+
+        if (value < 2 / divisor) {
+          return bounce * (value -= 1.5 / divisor) * value + 0.75;
+        }
+
+        if (value < 2.5 / divisor) {
+          return bounce * (value -= 2.25 / divisor) * value + 0.9375;
+        }
+
+        return bounce * (value -= 2.625 / divisor) * value + 0.984375;
+      }
+
+      function localizeMapAccessibility() {
+        const applyMapLabel = () => {
+          map
+            .getContainer()
+            .querySelectorAll('[aria-label="Map"]')
+            .forEach((element) => element.setAttribute("aria-label", "Mapa"));
+        };
+        const mapLabelObserver = new MutationObserver(() => {
+          applyMapLabel();
+        });
+
+        applyMapLabel();
+        mapLabelObserver.observe(map.getContainer(), {
+          attributes: true,
+          childList: true,
+          subtree: true,
+        });
+      }
+
+      function closeActivePopup() {
+        if (!activePopup) {
+          return;
+        }
+
+        closePopupWithAnimation(activePopup);
+      }
+
+      function closePopupWithAnimation(popup) {
+        const popupElement = popup.getElement();
+
+        if (!popupElement || popupElement.classList.contains("is-closing")) {
+          return;
+        }
+
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          popup.remove();
+          if (activePopup === popup) {
+            activePopup = null;
+            clearActiveFeature();
+          }
+          return;
+        }
+
+        popupElement.classList.add("is-closing");
+        window.setTimeout(() => {
+          popup.remove();
+          if (activePopup === popup) {
+            activePopup = null;
+            clearActiveFeature();
+          }
+        }, popupCloseDuration);
+      }
+
+      function bindPopupCloseAnimation(popup) {
+        const popupElement = popup.getElement();
+        const closeButton = popupElement.querySelector(".maplibregl-popup-close-button");
+
+        if (!closeButton) {
+          return;
+        }
+
+        closeButton.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          closePopupWithAnimation(popup);
+        }, true);
+      }
+
+      function renderPersonCard(person) {
+        const photo = `<img src="${escapeHtml(person.photo || defaultStaffPhoto)}" alt="" onerror="this.onerror=null;this.src='${escapeHtml(defaultStaffPhoto)}';">`;
+        const linkedinUrl = person.linkedin || "https://www.linkedin.com/";
+        const linkedin = `<a class="linkedin" href="${escapeHtml(linkedinUrl)}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de ${escapeHtml(person.name)}"><img src="linkedin.png" alt=""></a>`;
+
+        return `
+          <article class="person-card">
+            <div class="photo">${photo}</div>
+            <div class="content">
+              <h2>${escapeHtml(person.name)}</h2>
+              <p class="role">${escapeHtml(person.job)}</p>
+              <div class="footer">
+                <div class="meta">
+                  <span class="label">Localização</span>
+                  <p>${escapeHtml(person.location)}</p>
+                </div>
+                ${linkedin}
+              </div>
+            </div>
+          </article>
+        `;
+      }
+
+      function getPopupAnchor(point) {
+        const canvas = map.getCanvas();
+        const horizontalAnchor = point.x < canvas.clientWidth / 2 ? "left" : "right";
+
+        if (point.y < 220) {
+          return point.x < canvas.clientWidth / 2 ? "top-left" : "top-right";
+        }
+
+        if (point.y > canvas.clientHeight - 220) {
+          return point.x < canvas.clientWidth / 2 ? "bottom-left" : "bottom-right";
+        }
+
+        return horizontalAnchor;
+      }
+
+      function escapeHtml(value) {
+        return String(value).replace(/[&<>"']/g, (character) => {
+          const entities = {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#039;",
+          };
+          return entities[character];
+        });
+      }
+    </script>
+  </body>
+</html>

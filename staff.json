@@ -1,0 +1,242 @@
+[
+  {
+    "name": "Ana Carvalho",
+    "location": "São Paulo, Brasil",
+    "country": "Brasil",
+    "region": "LATAM",
+    "job": "Líder Regional de Operações",
+    "coordinates": [
+      -46.6333,
+      -23.5505
+    ],
+    "photo": "foto-padrao.png"
+  },
+  {
+    "name": "Mateo Ruiz",
+    "location": "Cidade do México, México",
+    "country": "México",
+    "region": "LATAM",
+    "job": "Gerente de Sucesso do Cliente",
+    "coordinates": [
+      -99.1332,
+      19.4326
+    ],
+    "photo": "foto-padrao.png"
+  },
+  {
+    "name": "Sofia Martinez",
+    "location": "Buenos Aires, Argentina",
+    "country": "Argentina",
+    "region": "LATAM",
+    "job": "Analista Financeira",
+    "coordinates": [
+      -58.3816,
+      -34.6037
+    ],
+    "photo": "foto-padrao.png"
+  },
+  {
+    "name": "Avery Johnson",
+    "location": "Nova York, Estados Unidos",
+    "country": "Estados Unidos",
+    "region": "América do Norte",
+    "job": "Diretor de Contas Corporativas",
+    "coordinates": [
+      -74.006,
+      40.7128
+    ],
+    "photo": "foto-padrao.png"
+  },
+  {
+    "name": "Maya Patel",
+    "location": "Toronto, Canadá",
+    "country": "Canadá",
+    "region": "América do Norte",
+    "job": "Gerente de Marketing de Produto",
+    "coordinates": [
+      -79.3832,
+      43.6532
+    ],
+    "photo": "foto-padrao.png"
+  },
+  {
+    "name": "Noah Kim",
+    "location": "São Francisco, Estados Unidos",
+    "country": "Estados Unidos",
+    "region": "América do Norte",
+    "job": "Engenheiro Principal",
+    "coordinates": [
+      -122.4194,
+      37.7749
+    ],
+    "photo": "foto-padrao.png"
+  },
+  {
+    "name": "Grace Lee",
+    "location": "Seattle, Estados Unidos",
+    "country": "Estados Unidos",
+    "region": "América do Norte",
+    "job": "Líder de Sistemas de Design",
+    "coordinates": [
+      -122.3321,
+      47.6062
+    ],
+    "photo": "foto-padrao.png"
+  },
+  {
+    "name": "Oliver Smith",
+    "location": "Londres, Reino Unido",
+    "country": "Reino Unido",
+    "region": "EMEA",
+    "job": "VP de Vendas",
+    "coordinates": [
+      -0.1276,
+      51.5072
+    ],
+    "photo": "foto-padrao.png"
+  },
+  {
+    "name": "Amelie Bernard",
+    "location": "Paris, França",
+    "country": "França",
+    "region": "EMEA",
+    "job": "Parceira de Pessoas",
+    "coordinates": [
+      2.3522,
+      48.8566
+    ],
+    "photo": "foto-padrao.png"
+  },
+  {
+    "name": "Jonas Weber",
+    "location": "Berlim, Alemanha",
+    "country": "Alemanha",
+    "region": "EMEA",
+    "job": "Arquiteto de Segurança",
+    "coordinates": [
+      13.405,
+      52.52
+    ],
+    "photo": "foto-padrao.png"
+  },
+  {
+    "name": "Nadia Hassan",
+    "location": "Cairo, Egito",
+    "country": "Egito",
+    "region": "EMEA",
+    "job": "Consultora de Implementação",
+    "coordinates": [
+      31.2357,
+      30.0444
+    ],
+    "photo": "foto-padrao.png"
+  },
+  {
+    "name": "Lina Okafor",
+    "location": "Lagos, Nigéria",
+    "country": "Nigéria",
+    "region": "EMEA",
+    "job": "Gerente de Parcerias",
+    "coordinates": [
+      3.3792,
+      6.5244
+    ],
+    "photo": "foto-padrao.png"
+  },
+  {
+    "name": "Priya Nair",
+    "location": "Bengaluru, Índia",
+    "country": "Índia",
+    "region": "APAC",
+    "job": "Gerente de Engenharia",
+    "coordinates": [
+      77.5946,
+      12.9716
+    ],
+    "photo": "foto-padrao.png"
+  },
+  {
+    "name": "Kenji Tanaka",
+    "location": "Tóquio, Japão",
+    "country": "Japão",
+    "region": "APAC",
+    "job": "Engenheiro de Soluções",
+    "coordinates": [
+      139.6917,
+      35.6895
+    ],
+    "photo": "foto-padrao.png"
+  },
+  {
+    "name": "Mei Chen",
+    "location": "Singapura",
+    "country": "Singapura",
+    "region": "APAC",
+    "job": "Líder de Plataforma de Dados",
+    "coordinates": [
+      103.8198,
+      1.3521
+    ],
+    "photo": "foto-padrao.png"
+  },
+  {
+    "name": "James Wilson",
+    "location": "Sydney, Austrália",
+    "country": "Austrália",
+    "region": "APAC",
+    "job": "Diretor de Suporte",
+    "coordinates": [
+      151.2093,
+      -33.8688
+    ],
+    "photo": "foto-padrao.png"
+  },
+  {
+    "name": "Hannah Meyer",
+    "location": "Amsterdã, Países Baixos",
+    "country": "Países Baixos",
+    "region": "EMEA",
+    "job": "Líder de Marketing de Ciclo de Vida",
+    "coordinates": [
+      4.9041,
+      52.3676
+    ],
+    "photo": "foto-padrao.png"
+  },
+  {
+    "name": "Daniel Cohen",
+    "location": "Tel Aviv, Israel",
+    "country": "Israel",
+    "region": "EMEA",
+    "job": "Engenheiro Backend Staff",
+    "coordinates": [
+      34.7818,
+      32.0853
+    ],
+    "photo": "foto-padrao.png"
+  },
+  {
+    "name": "Isabella Rossi",
+    "location": "Milão, Itália",
+    "country": "Itália",
+    "region": "EMEA",
+    "job": "Gerente de Operações de Receita",
+    "coordinates": [
+      9.19,
+      45.4642
+    ],
+    "photo": "foto-padrao.png"
+  },
+  {
+    "name": "Chen Wei",
+    "location": "Hong Kong",
+    "country": "Hong Kong",
+    "region": "APAC",
+    "job": "Consultor Jurídico Regional",
+    "coordinates": [
+      114.1694,
+      22.3193
+    ],
+    "photo": "foto-padrao.png"
+  }
+]
