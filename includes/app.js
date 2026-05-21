@@ -3,6 +3,10 @@ const staffPhotoBaseUrl = "assets/photos/";
 const defaultStaffPhoto = `${staffPhotoBaseUrl}foto-padrao.png`;
 const popupCloseDuration = 260;
 const markerColor = "#1c1c1c";
+const worldBounds = [
+  [-179.999, -85.051129],
+  [179.999, 85.051129],
+];
 const markerFocusExpression = ["coalesce", ["feature-state", "focus"], 0];
 const markerFocusDuration = 180;
 const clusterRadiusExpression = [
@@ -61,6 +65,8 @@ const map = new maplibregl.Map({
   zoom: 1.25,
   minZoom: 1,
   maxZoom: 9,
+  maxBounds: worldBounds,
+  renderWorldCopies: false,
   attributionControl: false,
   locale: {
     "AttributionControl.ToggleAttribution": "Alternar atribuição",
