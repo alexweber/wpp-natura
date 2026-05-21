@@ -79,6 +79,7 @@ const map = new maplibregl.Map({
 });
 
 localizeMapAccessibility();
+initTargetCrosshair();
 map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-right");
 map.addControl(new maplibregl.FullscreenControl(), "bottom-right");
 map.addControl(
@@ -488,6 +489,35 @@ function localizeMapAccessibility() {
     childList: true,
     subtree: true,
   });
+}
+
+function initTargetCrosshair() {
+  const root = document.documentElement;
+
+  const hideCrosshair = () => {
+    document.body.classList.remove("is-targeting");
+  };
+
+  window.addEventListener(
+    "pointermove",
+    (event) => {
+      if (event.pointerType === "touch") {
+        hideCrosshair();
+        return;
+      }
+
+      root.style.setProperty("--target-crosshair-x", `${event.clientX}px`);
+      root.style.setProperty("--target-crosshair-y", `${event.clientY}px`);
+      document.body.classList.add("is-targeting");
+    },
+    {
+      capture: true,
+      passive: true,
+    }
+  );
+
+  window.addEventListener("pointerleave", hideCrosshair);
+  window.addEventListener("blur", hideCrosshair);
 }
 
 function closeActivePopup() {
