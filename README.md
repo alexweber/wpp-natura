@@ -4,8 +4,11 @@
 
 ## Development
 
+This project uses pnpm. The pinned package-manager version is declared in `package.json`.
+
 ```sh
-npm run dev
+corepack enable
+pnpm dev
 ```
 
 ## Deploy
