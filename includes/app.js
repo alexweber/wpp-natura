@@ -4,6 +4,7 @@ const defaultStaffPhoto = `${staffPhotoBaseUrl}foto-padrao.png`;
 const popupCloseDuration = 260;
 const markerColor = "#1c1c1c";
 const popupConnectorGap = 84;
+const popupConnectorCardCircleInset = 12;
 const popupCardWidth = 288;
 const popupCardEstimatedHeight = 432;
 const popupViewportPadding = 24;
@@ -564,12 +565,12 @@ function updatePopupConnector() {
   const connector = document.querySelector(".popup-connector");
   const line = connector?.querySelector(".popup-connector-line");
   const markerPoint = connector?.querySelector(".popup-connector-point-marker");
-  const cardPoint = connector?.querySelector(".popup-connector-point-card");
+  const cardCircle = connector?.querySelector(".popup-connector-point-card");
   const popupContent = activePopupConnector.popup
     .getElement()
     ?.querySelector(".maplibregl-popup-content");
 
-  if (!connector || !line || !markerPoint || !cardPoint || !popupContent) {
+  if (!connector || !line || !markerPoint || !cardCircle || !popupContent) {
     return;
   }
 
@@ -578,8 +579,10 @@ function updatePopupConnector() {
   const projectedMarker = map.project(activePopupConnector.coordinates);
   const markerX = mapRect.left + projectedMarker.x;
   const markerY = mapRect.top + projectedMarker.y;
-  const cardX = clamp(markerX, popupRect.left, popupRect.right);
-  const cardY = clamp(markerY, popupRect.top, popupRect.bottom);
+  const cardPoint = getPopupConnectorCardPoint(
+    popupRect,
+    activePopupConnector.popup.getElement()
+  );
 
   if (!Number.isFinite(markerX) || !Number.isFinite(markerY)) {
     connector.classList.remove("is-visible");
@@ -588,13 +591,35 @@ function updatePopupConnector() {
 
   line.setAttribute("x1", markerX);
   line.setAttribute("y1", markerY);
-  line.setAttribute("x2", cardX);
-  line.setAttribute("y2", cardY);
+  line.setAttribute("x2", cardPoint.lineX);
+  line.setAttribute("y2", cardPoint.lineY);
   markerPoint.setAttribute("cx", markerX);
   markerPoint.setAttribute("cy", markerY);
-  cardPoint.setAttribute("cx", cardX);
-  cardPoint.setAttribute("cy", cardY);
+  cardCircle.setAttribute("cx", cardPoint.pointX);
+  cardCircle.setAttribute("cy", cardPoint.pointY);
   connector.classList.add("is-visible");
+}
+
+function getPopupConnectorCardPoint(popupRect, popupElement) {
+  const anchor = getPopupAnchorName(popupElement);
+  const useRightCorner = anchor.includes("right");
+  const lineX = useRightCorner ? popupRect.right : popupRect.left;
+  const pointInset = useRightCorner
+    ? -popupConnectorCardCircleInset
+    : popupConnectorCardCircleInset;
+
+  return {
+    lineX,
+    lineY: popupRect.top,
+    pointX: lineX + pointInset,
+    pointY: popupRect.top + popupConnectorCardCircleInset,
+  };
+}
+
+function getPopupAnchorName(popupElement) {
+  return Array.from(popupElement.classList)
+    .find((className) => className.startsWith("maplibregl-popup-anchor-"))
+    ?.replace("maplibregl-popup-anchor-", "") || "";
 }
 
 function closeActivePopup() {
@@ -693,10 +718,6 @@ function getPopupAnchor(point) {
   const verticalAnchor = hasRoomBelow ? "top" : "bottom";
 
   return `${verticalAnchor}-${horizontalAnchor}`;
-}
-
-function clamp(value, min, max) {
-  return Math.min(Math.max(value, min), max);
 }
 
 function escapeHtml(value) {
