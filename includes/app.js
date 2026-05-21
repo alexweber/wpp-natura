@@ -3,6 +3,20 @@ const staffPhotoBaseUrl = "assets/photos/";
 const defaultStaffPhoto = `${staffPhotoBaseUrl}foto-padrao.png`;
 const popupCloseDuration = 260;
 const markerColor = "#1c1c1c";
+const popupConnectorGap = 84;
+const popupCardWidth = 288;
+const popupCardEstimatedHeight = 432;
+const popupViewportPadding = 24;
+const popupOffset = {
+  "top-left": [popupConnectorGap, popupConnectorGap],
+  top: [0, popupConnectorGap],
+  "top-right": [-popupConnectorGap, popupConnectorGap],
+  right: [-popupConnectorGap, 0],
+  "bottom-right": [-popupConnectorGap, -popupConnectorGap],
+  bottom: [0, -popupConnectorGap],
+  "bottom-left": [popupConnectorGap, -popupConnectorGap],
+  left: [popupConnectorGap, 0],
+};
 const worldBounds = [
   [-179.999, -85.051129],
   [179.999, 85.051129],
@@ -29,6 +43,7 @@ const interactivePersonRadiusExpression = [
   markerFocusExpression,
 ];
 let activePopup = null;
+let activePopupConnector = null;
 let activeFeature = null;
 let hoveredFeature = null;
 const markerFocusAnimations = new Map();
@@ -80,6 +95,7 @@ const map = new maplibregl.Map({
 
 localizeMapAccessibility();
 initTargetCrosshair();
+initPopupConnector();
 map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-right");
 map.addControl(new maplibregl.FullscreenControl(), "bottom-right");
 map.addControl(
@@ -194,7 +210,7 @@ map.on("load", async () => {
       anchor: getPopupAnchor(event.point),
       closeOnClick: false,
       maxWidth: "288px",
-      offset: 16,
+      offset: popupOffset,
     });
 
     popup
@@ -204,6 +220,7 @@ map.on("load", async () => {
 
     activePopup = popup;
     bindPopupCloseAnimation(popup);
+    showPopupConnector(popup, coordinates);
   });
 
   map.on("click", (event) => {
@@ -520,6 +537,66 @@ function initTargetCrosshair() {
   window.addEventListener("blur", hideCrosshair);
 }
 
+function initPopupConnector() {
+  map.on("render", updatePopupConnector);
+  map.on("resize", updatePopupConnector);
+}
+
+function showPopupConnector(popup, coordinates) {
+  activePopupConnector = {
+    popup,
+    coordinates: coordinates.slice(),
+  };
+
+  requestAnimationFrame(updatePopupConnector);
+}
+
+function hidePopupConnector() {
+  activePopupConnector = null;
+  document.querySelector(".popup-connector")?.classList.remove("is-visible");
+}
+
+function updatePopupConnector() {
+  if (!activePopupConnector) {
+    return;
+  }
+
+  const connector = document.querySelector(".popup-connector");
+  const line = connector?.querySelector(".popup-connector-line");
+  const markerPoint = connector?.querySelector(".popup-connector-point-marker");
+  const cardPoint = connector?.querySelector(".popup-connector-point-card");
+  const popupContent = activePopupConnector.popup
+    .getElement()
+    ?.querySelector(".maplibregl-popup-content");
+
+  if (!connector || !line || !markerPoint || !cardPoint || !popupContent) {
+    return;
+  }
+
+  const mapRect = map.getContainer().getBoundingClientRect();
+  const popupRect = popupContent.getBoundingClientRect();
+  const projectedMarker = map.project(activePopupConnector.coordinates);
+  const markerX = mapRect.left + projectedMarker.x;
+  const markerY = mapRect.top + projectedMarker.y;
+  const cardX = clamp(markerX, popupRect.left, popupRect.right);
+  const cardY = clamp(markerY, popupRect.top, popupRect.bottom);
+
+  if (!Number.isFinite(markerX) || !Number.isFinite(markerY)) {
+    connector.classList.remove("is-visible");
+    return;
+  }
+
+  line.setAttribute("x1", markerX);
+  line.setAttribute("y1", markerY);
+  line.setAttribute("x2", cardX);
+  line.setAttribute("y2", cardY);
+  markerPoint.setAttribute("cx", markerX);
+  markerPoint.setAttribute("cy", markerY);
+  cardPoint.setAttribute("cx", cardX);
+  cardPoint.setAttribute("cy", cardY);
+  connector.classList.add("is-visible");
+}
+
 function closeActivePopup() {
   if (!activePopup) {
     return;
@@ -533,6 +610,10 @@ function closePopupWithAnimation(popup) {
 
   if (!popupElement || popupElement.classList.contains("is-closing")) {
     return;
+  }
+
+  if (activePopup === popup) {
+    hidePopupConnector();
   }
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -594,17 +675,28 @@ function renderPersonCard(person) {
 
 function getPopupAnchor(point) {
   const canvas = map.getCanvas();
-  const horizontalAnchor = point.x < canvas.clientWidth / 2 ? "left" : "right";
+  const hasRoomRight =
+    point.x + popupConnectorGap + popupCardWidth <= canvas.clientWidth - popupViewportPadding;
+  const hasRoomLeft =
+    point.x - popupConnectorGap - popupCardWidth >= popupViewportPadding;
+  const hasRoomBelow =
+    point.y + popupConnectorGap + popupCardEstimatedHeight <=
+    canvas.clientHeight - popupViewportPadding;
+  const hasRoomAbove =
+    point.y - popupConnectorGap - popupCardEstimatedHeight >= popupViewportPadding;
+  const horizontalAnchor = hasRoomRight || !hasRoomLeft ? "left" : "right";
 
-  if (point.y < 220) {
-    return point.x < canvas.clientWidth / 2 ? "top-left" : "top-right";
+  if (!hasRoomBelow && !hasRoomAbove) {
+    return horizontalAnchor;
   }
 
-  if (point.y > canvas.clientHeight - 220) {
-    return point.x < canvas.clientWidth / 2 ? "bottom-left" : "bottom-right";
-  }
+  const verticalAnchor = hasRoomBelow ? "top" : "bottom";
 
-  return horizontalAnchor;
+  return `${verticalAnchor}-${horizontalAnchor}`;
+}
+
+function clamp(value, min, max) {
+  return Math.min(Math.max(value, min), max);
 }
 
 function escapeHtml(value) {
