@@ -11,6 +11,10 @@ corepack enable
 pnpm dev
 ```
 
+The development server runs at `http://127.0.0.1:8000/`.
+
+Use `PORT=8001 pnpm dev` if port 8000 is already in use.
+
 ## Deploy
 
 This is a static site deployed by GitHub Actions to GitHub Pages.
