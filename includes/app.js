@@ -4,7 +4,8 @@ const defaultStaffPhoto = `${staffPhotoBaseUrl}foto-padrao.png`;
 const popupCloseDuration = 260;
 const markerColor = "#1c1c1c";
 const popupConnectorGap = 84;
-const popupConnectorCardCircleInset = 12;
+const popupConnectorCircleRadius = 12;
+const popupConnectorCardCircleInset = 24;
 const popupCardWidth = 288;
 const popupCardEstimatedHeight = 432;
 const popupViewportPadding = 24;
@@ -209,6 +210,7 @@ map.on("load", async () => {
 
     const popup = new maplibregl.Popup({
       anchor: getPopupAnchor(event.point),
+      closeButton: false,
       closeOnClick: false,
       maxWidth: "288px",
       offset: popupOffset,
@@ -581,7 +583,9 @@ function updatePopupConnector() {
   const markerY = mapRect.top + projectedMarker.y;
   const cardPoint = getPopupConnectorCardPoint(
     popupRect,
-    activePopupConnector.popup.getElement()
+    activePopupConnector.popup.getElement(),
+    markerX,
+    markerY
   );
 
   if (!Number.isFinite(markerX) || !Number.isFinite(markerY)) {
@@ -600,19 +604,23 @@ function updatePopupConnector() {
   connector.classList.add("is-visible");
 }
 
-function getPopupConnectorCardPoint(popupRect, popupElement) {
+function getPopupConnectorCardPoint(popupRect, popupElement, markerX, markerY) {
   const anchor = getPopupAnchorName(popupElement);
   const useRightCorner = anchor.includes("right");
-  const lineX = useRightCorner ? popupRect.right : popupRect.left;
   const pointInset = useRightCorner
     ? -popupConnectorCardCircleInset
     : popupConnectorCardCircleInset;
+  const pointX = (useRightCorner ? popupRect.right : popupRect.left) + pointInset;
+  const pointY = popupRect.top + popupConnectorCardCircleInset;
+  const markerDeltaX = markerX - pointX;
+  const markerDeltaY = markerY - pointY;
+  const markerDistance = Math.hypot(markerDeltaX, markerDeltaY) || 1;
 
   return {
-    lineX,
-    lineY: popupRect.top,
-    pointX: lineX + pointInset,
-    pointY: popupRect.top + popupConnectorCardCircleInset,
+    lineX: pointX + (markerDeltaX / markerDistance) * popupConnectorCircleRadius,
+    lineY: pointY + (markerDeltaY / markerDistance) * popupConnectorCircleRadius,
+    pointX,
+    pointY,
   };
 }
 
