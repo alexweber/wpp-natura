@@ -181,6 +181,8 @@ map.on("load", async () => {
   animateMarkersIn();
 
   map.on("click", "clusters", async (event) => {
+    closeActivePopup();
+
     const features = map.queryRenderedFeatures(event.point, {
       layers: ["clusters"],
     });
