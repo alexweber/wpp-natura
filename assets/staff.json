@@ -1,242 +1,1024 @@
 [
   {
-    "name": "Ana Carvalho",
-    "location": "São Paulo, Brasil",
-    "country": "Brasil",
-    "region": "LATAM",
-    "job": "Líder Regional de Operações",
-    "coordinates": [
-      -46.6333,
-      -23.5505
-    ],
-    "photo": "foto-padrao.png"
-  },
-  {
-    "name": "Mateo Ruiz",
-    "location": "Cidade do México, México",
-    "country": "México",
-    "region": "LATAM",
-    "job": "Gerente de Sucesso do Cliente",
-    "coordinates": [
-      -99.1332,
-      19.4326
-    ],
-    "photo": "foto-padrao.png"
-  },
-  {
-    "name": "Sofia Martinez",
-    "location": "Buenos Aires, Argentina",
-    "country": "Argentina",
-    "region": "LATAM",
-    "job": "Analista Financeira",
-    "coordinates": [
-      -58.3816,
-      -34.6037
-    ],
-    "photo": "foto-padrao.png"
-  },
-  {
-    "name": "Avery Johnson",
-    "location": "Nova York, Estados Unidos",
-    "country": "Estados Unidos",
-    "region": "América do Norte",
-    "job": "Diretor de Contas Corporativas",
+    "name": "Rafael Pitanguy",
+    "location": "Nova York",
+    "country": "Nova York",
+    "region": "Nova York",
+    "job": "Deputy Global CCO",
+    "agency": "VML",
+    "linkedin": "https://www.linkedin.com/in/rafael-pitanguy-813747103/",
     "coordinates": [
       -74.006,
       40.7128
     ],
-    "photo": "foto-padrao.png"
+    "photo": "rafael-pitanguy.jpg"
   },
   {
-    "name": "Maya Patel",
-    "location": "Toronto, Canadá",
-    "country": "Canadá",
-    "region": "América do Norte",
-    "job": "Gerente de Marketing de Produto",
-    "coordinates": [
-      -79.3832,
-      43.6532
-    ],
-    "photo": "foto-padrao.png"
-  },
-  {
-    "name": "Noah Kim",
-    "location": "São Francisco, Estados Unidos",
-    "country": "Estados Unidos",
-    "region": "América do Norte",
-    "job": "Engenheiro Principal",
-    "coordinates": [
-      -122.4194,
-      37.7749
-    ],
-    "photo": "foto-padrao.png"
-  },
-  {
-    "name": "Grace Lee",
-    "location": "Seattle, Estados Unidos",
-    "country": "Estados Unidos",
-    "region": "América do Norte",
-    "job": "Líder de Sistemas de Design",
-    "coordinates": [
-      -122.3321,
-      47.6062
-    ],
-    "photo": "foto-padrao.png"
-  },
-  {
-    "name": "Oliver Smith",
-    "location": "Londres, Reino Unido",
-    "country": "Reino Unido",
+    "name": "Jaime Mandelbaum",
+    "location": "EMEA",
+    "country": "EMEA",
     "region": "EMEA",
-    "job": "VP de Vendas",
+    "job": "CCO",
+    "agency": "VML",
+    "linkedin": "https://www.linkedin.com/in/jaime-mandelbaum-1a49073/",
     "coordinates": [
-      -0.1276,
-      51.5072
+      8.0594,
+      51.1657
     ],
-    "photo": "foto-padrao.png"
+    "photo": "jaime-mandelbaum.jpg"
   },
   {
-    "name": "Amelie Bernard",
-    "location": "Paris, França",
-    "country": "França",
+    "name": "Andre Laurentino",
+    "location": "EMEA",
+    "country": "EMEA",
     "region": "EMEA",
-    "job": "Parceira de Pessoas",
+    "job": "Deputy CCO",
+    "agency": "Ogilvy",
+    "linkedin": "https://www.linkedin.com/in/andre-dede-laurentino-66909540/",
     "coordinates": [
-      2.3522,
-      48.8566
+      12.8436,
+      51.1657
+    ],
+    "photo": "andre-laurentino.jpg"
+  },
+  {
+    "name": "Ana Rocha",
+    "location": "UK",
+    "country": "UK",
+    "region": "UK",
+    "job": "ECD",
+    "agency": "VML",
+    "linkedin": "https://www.linkedin.com/in/ana-rocha-sa/",
+    "coordinates": [
+      -0.8506,
+      51.0572
+    ],
+    "photo": "ana-rocha.jpg"
+  },
+  {
+    "name": "Teco de Lucia",
+    "location": "UK",
+    "country": "UK",
+    "region": "UK",
+    "job": "CD",
+    "agency": "VML",
+    "linkedin": "",
+    "coordinates": [
+      0.5954,
+      51.0572
     ],
     "photo": "foto-padrao.png"
   },
   {
-    "name": "Jonas Weber",
-    "location": "Berlim, Alemanha",
-    "country": "Alemanha",
-    "region": "EMEA",
-    "job": "Arquiteto de Segurança",
+    "name": "Ricardo Porto",
+    "location": "UK",
+    "country": "UK",
+    "region": "UK",
+    "job": "CD",
+    "agency": "VML",
+    "linkedin": "https://www.linkedin.com/in/rickporto/",
     "coordinates": [
-      13.405,
-      52.52
+      -0.8506,
+      51.9572
+    ],
+    "photo": "ricardo-porto.jpg"
+  },
+  {
+    "name": "Marco Bezerra",
+    "location": "UK",
+    "country": "UK",
+    "region": "UK",
+    "job": "ECD",
+    "agency": "VML Commerce",
+    "linkedin": "https://www.linkedin.com/in/marco-bezerra-09118925/",
+    "coordinates": [
+      0.5954,
+      51.9572
+    ],
+    "photo": "marco-bezerra.png"
+  },
+  {
+    "name": "Aricio Fortes",
+    "location": "UAE",
+    "country": "UAE",
+    "region": "UAE",
+    "job": "CCO",
+    "agency": "VML",
+    "linkedin": "https://www.linkedin.com/in/ariciofortes/",
+    "coordinates": [
+      55.2708,
+      25.2048
+    ],
+    "photo": "aricio-fortes.jpg"
+  },
+  {
+    "name": "Adrian Rios",
+    "location": "Spain",
+    "country": "Spain",
+    "region": "Spain",
+    "job": "ECD",
+    "agency": "VML",
+    "linkedin": "https://www.linkedin.com/in/adrián-rios-88598162/",
+    "coordinates": [
+      -3.7038,
+      40.4168
+    ],
+    "photo": "adrian-rios.jpg"
+  },
+  {
+    "name": "Eduardo Marques",
+    "location": "Brasil",
+    "country": "Brasil",
+    "region": "Brasil",
+    "job": "CCO",
+    "agency": "VML",
+    "linkedin": "https://www.linkedin.com/in/marqueseduardo/",
+    "coordinates": [
+      -51.2081,
+      -18.9942
+    ],
+    "photo": "eduardo-marques.jpg"
+  },
+  {
+    "name": "Roberta Harada",
+    "location": "Brasil",
+    "country": "Brasil",
+    "region": "Brasil",
+    "job": "ECD",
+    "agency": "VML",
+    "linkedin": "https://www.linkedin.com/in/roberta-harada-0a96b258/",
+    "coordinates": [
+      -49.5453,
+      -18.9942
+    ],
+    "photo": "roberta-harada.jpg"
+  },
+  {
+    "name": "Dani Marques",
+    "location": "Brasil",
+    "country": "Brasil",
+    "region": "Brasil",
+    "job": "Head of Content",
+    "agency": "VML",
+    "linkedin": "https://www.linkedin.com/in/danielemarques/",
+    "coordinates": [
+      -47.8825,
+      -18.9942
+    ],
+    "photo": "daniele-marques.jpg"
+  },
+  {
+    "name": "Denon Oliveira",
+    "location": "Brasil",
+    "country": "Brasil",
+    "region": "Brasil",
+    "job": "ECD",
+    "agency": "VML",
+    "linkedin": "https://www.linkedin.com/in/denonad/",
+    "coordinates": [
+      -46.2197,
+      -18.9942
+    ],
+    "photo": "denon-oliveira.jpg"
+  },
+  {
+    "name": "Frederico Teixeira",
+    "location": "Brasil",
+    "country": "Brasil",
+    "region": "Brasil",
+    "job": "ECD",
+    "agency": "VML",
+    "linkedin": "https://www.linkedin.com/in/fredericoteixeira/",
+    "coordinates": [
+      -44.5569,
+      -18.9942
+    ],
+    "photo": "frederico-teixeira.jpg"
+  },
+  {
+    "name": "Juliana Martins",
+    "location": "Brasil",
+    "country": "Brasil",
+    "region": "Brasil",
+    "job": "CD",
+    "agency": "VML",
+    "linkedin": "https://www.linkedin.com/in/juliana-martins-41419631/",
+    "coordinates": [
+      -51.2081,
+      -17.3942
+    ],
+    "photo": "juliana-martins.jpg"
+  },
+  {
+    "name": "Layanna Leonardo",
+    "location": "Brasil",
+    "country": "Brasil",
+    "region": "Brasil",
+    "job": "CD",
+    "agency": "VML",
+    "linkedin": "https://www.linkedin.com/in/layanaleonardo/",
+    "coordinates": [
+      -49.5453,
+      -17.3942
+    ],
+    "photo": "layana-leonardo.jpg"
+  },
+  {
+    "name": "Luiza Sá",
+    "location": "Brasil",
+    "country": "Brasil",
+    "region": "Brasil",
+    "job": "CD",
+    "agency": "VML",
+    "linkedin": "https://www.linkedin.com/in/luizasa/",
+    "coordinates": [
+      -47.8825,
+      -17.3942
+    ],
+    "photo": "luiza-sa.jpg"
+  },
+  {
+    "name": "Ingrid Coelho",
+    "location": "Brasil",
+    "country": "Brasil",
+    "region": "Brasil",
+    "job": "VP Criação",
+    "agency": "Não informado",
+    "linkedin": "https://www.linkedin.com/in/dindicoelho/",
+    "coordinates": [
+      -46.2197,
+      -17.3942
+    ],
+    "photo": "ingrid-coelho.png"
+  },
+  {
+    "name": "Ariane Polvani",
+    "location": "Brasil",
+    "country": "Brasil",
+    "region": "Brasil",
+    "job": "ECD",
+    "agency": "Mutato",
+    "linkedin": "https://www.linkedin.com/in/ariane-polvani-135178123/",
+    "coordinates": [
+      -44.5569,
+      -17.3942
+    ],
+    "photo": "ariane-polvani.jpg"
+  },
+  {
+    "name": "Manir Fadel",
+    "location": "Brasil",
+    "country": "Brasil",
+    "region": "Brasil",
+    "job": "Presidente & CCO",
+    "agency": "Grey",
+    "linkedin": "https://www.linkedin.com/in/manirfadel/",
+    "coordinates": [
+      -51.2081,
+      -15.7942
+    ],
+    "photo": "manir-fadel.jpg"
+  },
+  {
+    "name": "André Gola",
+    "location": "Brasil",
+    "country": "Brasil",
+    "region": "Brasil",
+    "job": "ECD",
+    "agency": "Grey",
+    "linkedin": "https://www.linkedin.com/in/andré-gola-3b5a2776/",
+    "coordinates": [
+      -49.5453,
+      -15.7942
+    ],
+    "photo": "andre-gola.jpg"
+  },
+  {
+    "name": "Fernanda Peka",
+    "location": "Brasil",
+    "country": "Brasil",
+    "region": "Brasil",
+    "job": "CD",
+    "agency": "Grey",
+    "linkedin": "https://www.linkedin.com/in/fernanda-peka-campos-311a89a1/",
+    "coordinates": [
+      -47.8825,
+      -15.7942
+    ],
+    "photo": "fernanda-peka.jpg"
+  },
+  {
+    "name": "Mariana Horta",
+    "location": "Brasil",
+    "country": "Brasil",
+    "region": "Brasil",
+    "job": "CD",
+    "agency": "Grey",
+    "linkedin": "https://www.linkedin.com/in/mariana-d-horta-10517737/?originalSubdomain=br",
+    "coordinates": [
+      -46.2197,
+      -15.7942
+    ],
+    "photo": "mariana-horta.jpg"
+  },
+  {
+    "name": "Renato Zandona",
+    "location": "Brasil",
+    "country": "Brasil",
+    "region": "Brasil",
+    "job": "CCO Latam",
+    "agency": "AKQA",
+    "linkedin": "https://www.linkedin.com/in/renatozandona/",
+    "coordinates": [
+      -44.5569,
+      -15.7942
+    ],
+    "photo": "renato-zandona.jpg"
+  },
+  {
+    "name": "Christiano Vellutini",
+    "location": "Brasil",
+    "country": "Brasil",
+    "region": "Brasil",
+    "job": "ECD Deputy",
+    "agency": "AKQA",
+    "linkedin": "https://www.linkedin.com/in/christianovellutini/",
+    "coordinates": [
+      -51.2081,
+      -14.1942
     ],
     "photo": "foto-padrao.png"
   },
   {
-    "name": "Nadia Hassan",
-    "location": "Cairo, Egito",
-    "country": "Egito",
-    "region": "EMEA",
-    "job": "Consultora de Implementação",
+    "name": "Marie Julie Gerbauld",
+    "location": "Brasil",
+    "country": "Brasil",
+    "region": "Brasil",
+    "job": "CCO",
+    "agency": "David",
+    "linkedin": "https://www.linkedin.com/in/marie-julie-gerbauld-6baa1172/",
     "coordinates": [
-      31.2357,
-      30.0444
+      -49.5453,
+      -14.1942
+    ],
+    "photo": "marie-julie-gerbauld.jpg"
+  },
+  {
+    "name": "Joao Gandara",
+    "location": "Brasil",
+    "country": "Brasil",
+    "region": "Brasil",
+    "job": "ECD",
+    "agency": "David",
+    "linkedin": "https://www.linkedin.com/in/joaogandara1/",
+    "coordinates": [
+      -47.8825,
+      -14.1942
+    ],
+    "photo": "joao-gandara.jpg"
+  },
+  {
+    "name": "Rafael Donato",
+    "location": "Brasil",
+    "country": "Brasil",
+    "region": "Brasil",
+    "job": "CCO",
+    "agency": "Ogilvy",
+    "linkedin": "https://www.linkedin.com/in/rafael-donato-12773895/",
+    "coordinates": [
+      -46.2197,
+      -14.1942
+    ],
+    "photo": "rafael-donato.jpg"
+  },
+  {
+    "name": "Teco Cipriano",
+    "location": "Brasil",
+    "country": "Brasil",
+    "region": "Brasil",
+    "job": "ECD",
+    "agency": "Ogilvy",
+    "linkedin": "https://www.linkedin.com/in/tecocipriano/",
+    "coordinates": [
+      -44.5569,
+      -14.1942
+    ],
+    "photo": "teco-cipriano.jpg"
+  },
+  {
+    "name": "Shingo Sato",
+    "location": "Brasil",
+    "country": "Brasil",
+    "region": "Brasil",
+    "job": "Design Director",
+    "agency": "Design Bridge",
+    "linkedin": "https://www.linkedin.com/in/shingos/",
+    "coordinates": [
+      -51.2081,
+      -12.5942
+    ],
+    "photo": "shingo-sato.jpg"
+  },
+  {
+    "name": "Heitor Piffer",
+    "location": "Brasil",
+    "country": "Brasil",
+    "region": "Brasil",
+    "job": "ECD",
+    "agency": "Design Bridge",
+    "linkedin": "https://www.linkedin.com/in/hpiffer/",
+    "coordinates": [
+      -49.5453,
+      -12.5942
+    ],
+    "photo": "heitor-piffer.jpg"
+  },
+  {
+    "name": "Luis Madruga Enriquez",
+    "location": "México",
+    "country": "México",
+    "region": "México",
+    "job": "CCO",
+    "agency": "VML",
+    "linkedin": "https://www.linkedin.com/in/luis-madruga-enriquez-ba22aa54/",
+    "coordinates": [
+      -100.0876,
+      18.5326
+    ],
+    "photo": "luis-madruga-enriquez.jpg"
+  },
+  {
+    "name": "Mire Espinoza",
+    "location": "México",
+    "country": "México",
+    "region": "México",
+    "job": "CD",
+    "agency": "VML",
+    "linkedin": "https://www.linkedin.com/in/miremush/?originalSubdomain=mx",
+    "coordinates": [
+      -99.1332,
+      18.5326
+    ],
+    "photo": "mire-espinoza.png"
+  },
+  {
+    "name": "Fernanda Gutierrez",
+    "location": "México",
+    "country": "México",
+    "region": "México",
+    "job": "CD",
+    "agency": "VML",
+    "linkedin": "https://www.linkedin.com/in/frnndmria/",
+    "coordinates": [
+      -98.1788,
+      18.5326
+    ],
+    "photo": "fernanda-gutierrez.jpg"
+  },
+  {
+    "name": "Alexis Ospina",
+    "location": "México",
+    "country": "México",
+    "region": "México",
+    "job": "CCO",
+    "agency": "Grey",
+    "linkedin": "https://www.linkedin.com/in/alexis-ospina/",
+    "coordinates": [
+      -100.0876,
+      20.3326
+    ],
+    "photo": "alexis-ospina.jpg"
+  },
+  {
+    "name": "Rafael Reina",
+    "location": "México",
+    "country": "México",
+    "region": "México",
+    "job": "CCO",
+    "agency": "Ogilvy",
+    "linkedin": "https://www.linkedin.com/in/rafael-reina-78282224/",
+    "coordinates": [
+      -99.1332,
+      20.3326
+    ],
+    "photo": "rafael-reina.jpg"
+  },
+  {
+    "name": "Sofia Cursach",
+    "location": "Argentina",
+    "country": "Argentina",
+    "region": "Argentina",
+    "job": "GCD",
+    "agency": "VML",
+    "linkedin": "https://www.linkedin.com/in/sofiacursach/",
+    "coordinates": [
+      -59.961,
+      -35.9037
+    ],
+    "photo": "sofia-cursach.jpg"
+  },
+  {
+    "name": "Raquel Chavez",
+    "location": "Argentina",
+    "country": "Argentina",
+    "region": "Argentina",
+    "job": "CD",
+    "agency": "VML",
+    "linkedin": "https://www.linkedin.com/in/raquelchavezaguirre/",
+    "coordinates": [
+      -58.9081,
+      -35.9037
+    ],
+    "photo": "raquel-chavez.jpg"
+  },
+  {
+    "name": "Agustina Zbogar",
+    "location": "Argentina",
+    "country": "Argentina",
+    "region": "Argentina",
+    "job": "CD",
+    "agency": "VML",
+    "linkedin": "https://www.linkedin.com/in/agustinazbogar/",
+    "coordinates": [
+      -57.8551,
+      -35.9037
+    ],
+    "photo": "agustina-zbogar.jpg"
+  },
+  {
+    "name": "Milagros García",
+    "location": "Argentina",
+    "country": "Argentina",
+    "region": "Argentina",
+    "job": "CD",
+    "agency": "VML",
+    "linkedin": "https://www.linkedin.com/in/milagros-garcia-6304b75b/",
+    "coordinates": [
+      -56.8022,
+      -35.9037
+    ],
+    "photo": "milagros-garcia.jpg"
+  },
+  {
+    "name": "Ailín Baldi",
+    "location": "Argentina",
+    "country": "Argentina",
+    "region": "Argentina",
+    "job": "CD",
+    "agency": "VML",
+    "linkedin": "https://www.linkedin.com/in/ailin-marina-baldi-4a3a94127/",
+    "coordinates": [
+      -59.961,
+      -34.6037
+    ],
+    "photo": "ailin-baldi.jpg"
+  },
+  {
+    "name": "Diego Medvedocky",
+    "location": "Argentina",
+    "country": "Argentina",
+    "region": "Argentina",
+    "job": "Global Creative Partner",
+    "agency": "Grey Global",
+    "linkedin": "https://www.linkedin.com/in/diegomedvedocky/",
+    "coordinates": [
+      -58.9081,
+      -34.6037
+    ],
+    "photo": "diego-medvedocky.jpg"
+  },
+  {
+    "name": "Juan Ure",
+    "location": "Argentina",
+    "country": "Argentina",
+    "region": "Argentina",
+    "job": "CCO",
+    "agency": "Grey",
+    "linkedin": "https://www.linkedin.com/in/juan-ure-31b19530/",
+    "coordinates": [
+      -57.8551,
+      -34.6037
+    ],
+    "photo": "juan-ure.jpg"
+  },
+  {
+    "name": "Gonzalo Montaña Fernandez",
+    "location": "Argentina",
+    "country": "Argentina",
+    "region": "Argentina",
+    "job": "CCO",
+    "agency": "Grey",
+    "linkedin": "https://www.linkedin.com/in/gonzalo-monta%C3%B1a-fernandez-b9529518/",
+    "coordinates": [
+      -56.8022,
+      -34.6037
+    ],
+    "photo": "gonzalo-montana-fernandez.jpg"
+  },
+  {
+    "name": "Ignacio Flotta",
+    "location": "Argentina",
+    "country": "Argentina",
+    "region": "Argentina",
+    "job": "CCO",
+    "agency": "David",
+    "linkedin": "https://www.linkedin.com/in/ignacioflotta/",
+    "coordinates": [
+      -59.961,
+      -33.3037
+    ],
+    "photo": "ignacio-flotta.jpg"
+  },
+  {
+    "name": "Nicolas Vara",
+    "location": "Argentina",
+    "country": "Argentina",
+    "region": "Argentina",
+    "job": "CCO",
+    "agency": "David",
+    "linkedin": "https://www.linkedin.com/in/nicolas-vara-73aba632/",
+    "coordinates": [
+      -58.9081,
+      -33.3037
+    ],
+    "photo": "nicolas-vara.jpg"
+  },
+  {
+    "name": "María Luján Donaire",
+    "location": "Argentina",
+    "country": "Argentina",
+    "region": "Argentina",
+    "job": "CCO",
+    "agency": "Ogilvy",
+    "linkedin": "https://www.linkedin.com/in/mar%C3%ADa-luj%C3%A1n-donaire-78262025/",
+    "coordinates": [
+      -57.8551,
+      -33.3037
+    ],
+    "photo": "maria-lujan-donaire.png"
+  },
+  {
+    "name": "Daniela Cabezas",
+    "location": "Chile",
+    "country": "Chile",
+    "region": "Chile",
+    "job": "CD",
+    "agency": "VML",
+    "linkedin": "",
+    "coordinates": [
+      -70.6693,
+      -33.4489
     ],
     "photo": "foto-padrao.png"
   },
   {
-    "name": "Lina Okafor",
-    "location": "Lagos, Nigéria",
-    "country": "Nigéria",
-    "region": "EMEA",
-    "job": "Gerente de Parcerias",
+    "name": "Juan Pablo Garcia",
+    "location": "Colômbia",
+    "country": "Colômbia",
+    "region": "Colômbia",
+    "job": "Creative Lead",
+    "agency": "DAVID",
+    "linkedin": "https://www.linkedin.com/in/jupagar/",
     "coordinates": [
-      3.3792,
-      6.5244
+      -74.624,
+      4.161
+    ],
+    "photo": "juan-pablo-garcia.jpg"
+  },
+  {
+    "name": "Gastón Potasz",
+    "location": "Colômbia",
+    "country": "Colômbia",
+    "region": "Colômbia",
+    "job": "CCO Andina",
+    "agency": "Ogilvy",
+    "linkedin": "https://www.linkedin.com/in/gastonpotasz/",
+    "coordinates": [
+      -73.5202,
+      4.161
+    ],
+    "photo": "gaston-potasz.jpg"
+  },
+  {
+    "name": "Amir Torres",
+    "location": "Colômbia",
+    "country": "Colômbia",
+    "region": "Colômbia",
+    "job": "ECD",
+    "agency": "Ogilvy",
+    "linkedin": "https://www.linkedin.com/in/amir-torres-l%C3%B3pez-137bb1247/",
+    "coordinates": [
+      -74.624,
+      5.261
     ],
     "photo": "foto-padrao.png"
   },
   {
-    "name": "Priya Nair",
-    "location": "Bengaluru, Índia",
-    "country": "Índia",
-    "region": "APAC",
-    "job": "Gerente de Engenharia",
+    "name": "Romina Rivero",
+    "location": "Uruguai",
+    "country": "Uruguai",
+    "region": "Uruguai",
+    "job": "CD",
+    "agency": "Ogilvy",
+    "linkedin": "https://www.linkedin.com/in/rominarivero89/",
     "coordinates": [
-      77.5946,
-      12.9716
+      -56.4998,
+      -34.9011
+    ],
+    "photo": "romina-rivero.png"
+  },
+  {
+    "name": "Sebastián Mir",
+    "location": "Uruguai",
+    "country": "Uruguai",
+    "region": "Uruguai",
+    "job": "CCO",
+    "agency": "Ogilvy",
+    "linkedin": "https://www.linkedin.com/in/sebastianmir/",
+    "coordinates": [
+      -55.8292,
+      -34.9011
+    ],
+    "photo": "sebastian-mir.jpg"
+  },
+  {
+    "name": "Jorge Heilbrom",
+    "location": "Panamá",
+    "country": "Panamá",
+    "region": "Panamá",
+    "job": "CCO",
+    "agency": "Star 5",
+    "linkedin": "",
+    "coordinates": [
+      -79.5199,
+      8.9824
     ],
     "photo": "foto-padrao.png"
   },
   {
-    "name": "Kenji Tanaka",
-    "location": "Tóquio, Japão",
-    "country": "Japão",
-    "region": "APAC",
-    "job": "Engenheiro de Soluções",
+    "name": "Santiago Morello",
+    "location": "Paraguai",
+    "country": "Paraguai",
+    "region": "Paraguai",
+    "job": "ECD",
+    "agency": "Ogilvy",
+    "linkedin": "https://www.linkedin.com/in/santi-morello/",
     "coordinates": [
-      139.6917,
-      35.6895
+      -58.0735,
+      -25.7137
+    ],
+    "photo": "santiago-morello.jpg"
+  },
+  {
+    "name": "Mario Hannich",
+    "location": "Paraguai",
+    "country": "Paraguai",
+    "region": "Paraguai",
+    "job": "CD",
+    "agency": "Ogilvy",
+    "linkedin": "",
+    "coordinates": [
+      -57.5759,
+      -25.7137
     ],
     "photo": "foto-padrao.png"
   },
   {
-    "name": "Mei Chen",
-    "location": "Singapura",
-    "country": "Singapura",
-    "region": "APAC",
-    "job": "Líder de Plataforma de Dados",
+    "name": "Lucas Elvira",
+    "location": "Paraguai",
+    "country": "Paraguai",
+    "region": "Paraguai",
+    "job": "CD",
+    "agency": "Ogilvy",
+    "linkedin": "",
     "coordinates": [
-      103.8198,
-      1.3521
+      -57.0783,
+      -25.7137
     ],
     "photo": "foto-padrao.png"
   },
   {
-    "name": "James Wilson",
-    "location": "Sydney, Austrália",
-    "country": "Austrália",
-    "region": "APAC",
-    "job": "Diretor de Suporte",
+    "name": "Francisco Camacho",
+    "location": "Paraguai",
+    "country": "Paraguai",
+    "region": "Paraguai",
+    "job": "CCO",
+    "agency": "Ogilvy",
+    "linkedin": "https://www.linkedin.com/in/francisco-camacho-martino-4a924689/",
     "coordinates": [
-      151.2093,
-      -33.8688
+      -58.0735,
+      -24.8137
+    ],
+    "photo": "francisco-camacho.png"
+  },
+  {
+    "name": "Juan Pablo Jara",
+    "location": "Paraguai",
+    "country": "Paraguai",
+    "region": "Paraguai",
+    "job": "CD",
+    "agency": "Ogilvy",
+    "linkedin": "",
+    "coordinates": [
+      -57.5759,
+      -24.8137
     ],
     "photo": "foto-padrao.png"
   },
   {
-    "name": "Hannah Meyer",
-    "location": "Amsterdã, Países Baixos",
-    "country": "Países Baixos",
-    "region": "EMEA",
-    "job": "Líder de Marketing de Ciclo de Vida",
+    "name": "Miguel Muñoz",
+    "location": "Paraguai",
+    "country": "Paraguai",
+    "region": "Paraguai",
+    "job": "CD",
+    "agency": "Ogilvy",
+    "linkedin": "",
     "coordinates": [
-      4.9041,
-      52.3676
+      -57.0783,
+      -24.8137
     ],
     "photo": "foto-padrao.png"
   },
   {
-    "name": "Daniel Cohen",
-    "location": "Tel Aviv, Israel",
-    "country": "Israel",
-    "region": "EMEA",
-    "job": "Engenheiro Backend Staff",
+    "name": "Piero Oliveri",
+    "location": "Peru",
+    "country": "Peru",
+    "region": "Peru",
+    "job": "CCO",
+    "agency": "Grey Peru",
+    "linkedin": "https://www.linkedin.com/in/piero-oliveri-b273bb67/",
     "coordinates": [
-      34.7818,
-      32.0853
+      -77.5029,
+      -12.0464
+    ],
+    "photo": "piero-oliveri.jpg"
+  },
+  {
+    "name": "José \"Coyote\" Rivera",
+    "location": "Peru",
+    "country": "Peru",
+    "region": "Peru",
+    "job": "Creative Chairman",
+    "agency": "Grey Peru",
+    "linkedin": "",
+    "coordinates": [
+      -76.5827,
+      -12.0464
     ],
     "photo": "foto-padrao.png"
   },
   {
-    "name": "Isabella Rossi",
-    "location": "Milão, Itália",
-    "country": "Itália",
-    "region": "EMEA",
-    "job": "Gerente de Operações de Receita",
+    "name": "Sebastian Bullorini",
+    "location": "Porto Rico",
+    "country": "Porto Rico",
+    "region": "Porto Rico",
+    "job": "CCO",
+    "agency": "Ogilvy",
+    "linkedin": "",
     "coordinates": [
-      9.19,
-      45.4642
+      -66.1057,
+      18.4655
     ],
     "photo": "foto-padrao.png"
   },
   {
-    "name": "Chen Wei",
-    "location": "Hong Kong",
-    "country": "Hong Kong",
-    "region": "APAC",
-    "job": "Consultor Jurídico Regional",
+    "name": "Sussy Navia",
+    "location": "Honduras",
+    "country": "Honduras",
+    "region": "Honduras",
+    "job": "CD",
+    "agency": "Ogilvy",
+    "linkedin": "https://www.linkedin.com/in/sussy-navia/",
     "coordinates": [
-      114.1694,
-      22.3193
+      -87.4903,
+      14.0723
+    ],
+    "photo": "sussy-navia.jpg"
+  },
+  {
+    "name": "Renzo Rossi",
+    "location": "Honduras",
+    "country": "Honduras",
+    "region": "Honduras",
+    "job": "CD",
+    "agency": "Ogilvy",
+    "linkedin": "https://www.linkedin.com/in/renzojael/",
+    "coordinates": [
+      -86.9233,
+      14.0723
+    ],
+    "photo": "renzo-rossi.jpg"
+  },
+  {
+    "name": "Juan Manuel Gaitán",
+    "location": "República Dominicana",
+    "country": "República Dominicana",
+    "region": "República Dominicana",
+    "job": "CCO",
+    "agency": "Ogilvy",
+    "linkedin": "https://www.linkedin.com/in/juan-manuel-gait%C3%A1n-5a1499105/",
+    "coordinates": [
+      -69.9312,
+      18.4861
+    ],
+    "photo": "juan-manuel-gaitan.jpg"
+  },
+  {
+    "name": "Fernando Plata",
+    "location": "Equador",
+    "country": "Equador",
+    "region": "Equador",
+    "job": "CD",
+    "agency": "Ogilvy",
+    "linkedin": "https://www.linkedin.com/in/ferplata/",
+    "coordinates": [
+      -78.7428,
+      -0.1807
+    ],
+    "photo": "fernando-plata.png"
+  },
+  {
+    "name": "Nicolás Lugo",
+    "location": "Equador",
+    "country": "Equador",
+    "region": "Equador",
+    "job": "CCO",
+    "agency": "Ogilvy",
+    "linkedin": "https://www.linkedin.com/in/nicol%C3%A1s-lugo-00833265/",
+    "coordinates": [
+      -78.1928,
+      -0.1807
+    ],
+    "photo": "nicolas-lugo.jpg"
+  },
+  {
+    "name": "Matías Celis",
+    "location": "El Salvador",
+    "country": "El Salvador",
+    "region": "El Salvador",
+    "job": "ECD",
+    "agency": "Ogilvy",
+    "linkedin": "",
+    "coordinates": [
+      -89.3983,
+      13.6929
     ],
     "photo": "foto-padrao.png"
+  },
+  {
+    "name": "Alex Gonzales",
+    "location": "El Salvador",
+    "country": "El Salvador",
+    "region": "El Salvador",
+    "job": "CD",
+    "agency": "Ogilvy",
+    "linkedin": "",
+    "coordinates": [
+      -89.0381,
+      13.6929
+    ],
+    "photo": "foto-padrao.png"
+  },
+  {
+    "name": "Felipe Santana",
+    "location": "Guatemala",
+    "country": "Guatemala",
+    "region": "Guatemala",
+    "job": "CD",
+    "agency": "Ogilvy",
+    "linkedin": "",
+    "coordinates": [
+      -90.7911,
+      14.3599
+    ],
+    "photo": "foto-padrao.png"
+  },
+  {
+    "name": "Gustavo Tovar",
+    "location": "Guatemala",
+    "country": "Guatemala",
+    "region": "Guatemala",
+    "job": "CD",
+    "agency": "Ogilvy",
+    "linkedin": "",
+    "coordinates": [
+      -90.2227,
+      14.3599
+    ],
+    "photo": "foto-padrao.png"
+  },
+  {
+    "name": "Ricardo Mendoza",
+    "location": "Guatemala",
+    "country": "Guatemala",
+    "region": "Guatemala",
+    "job": "CCO",
+    "agency": "Ogilvy",
+    "linkedin": "https://www.linkedin.com/in/ricardo-mendoza-%E2%80%9Cbandas%E2%80%9D-b5922b20/",
+    "coordinates": [
+      -90.7911,
+      14.9099
+    ],
+    "photo": "ricardo-mendoza.jpg"
   }
 ]

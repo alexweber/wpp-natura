@@ -199,7 +199,7 @@ map.on("load", async () => {
     event.preventDefault();
     const feature = event.features[0];
     const coordinates = feature.geometry.coordinates.slice();
-    const { name, location, job, photo, linkedin } = feature.properties;
+    const { name, location, job, agency, photo, linkedin } = feature.properties;
 
     while (Math.abs(event.lngLat.lng - coordinates[0]) > 180) {
       coordinates[0] += event.lngLat.lng > coordinates[0] ? 360 : -360;
@@ -218,7 +218,7 @@ map.on("load", async () => {
 
     popup
       .setLngLat(coordinates)
-      .setHTML(renderPersonCard({ name, location, job, photo, linkedin }))
+      .setHTML(renderPersonCard({ name, location, job, agency, photo, linkedin }))
       .addTo(map);
 
     activePopup = popup;
@@ -287,6 +287,7 @@ function buildStaffGeoJson(staff) {
         country: person.country,
         region: person.region,
         job: person.job,
+        agency: person.agency || "",
         photo: resolveStaffPhotoUrl(person.photo),
         linkedin: person.linkedin || "",
       },
@@ -685,8 +686,11 @@ function bindPopupCloseAnimation(popup) {
 
 function renderPersonCard(person) {
   const photo = `<img src="${escapeHtml(person.photo || defaultStaffPhoto)}" alt="" onerror="this.onerror=null;this.src='${escapeHtml(defaultStaffPhoto)}';">`;
-  const linkedinUrl = person.linkedin || "https://www.linkedin.com/";
-  const linkedin = `<a class="linkedin" href="${escapeHtml(linkedinUrl)}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de ${escapeHtml(person.name)}"><img src="assets/linkedin.png" alt=""></a>`;
+  const hasLinkedin = /^https?:\/\//.test(person.linkedin || "");
+  const linkedin = hasLinkedin
+    ? `<a class="linkedin" href="${escapeHtml(person.linkedin)}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de ${escapeHtml(person.name)}"><img src="assets/linkedin.png" alt=""></a>`
+    : "";
+  const agency = person.agency || person.location;
 
   return `
     <article class="person-card">
@@ -695,9 +699,9 @@ function renderPersonCard(person) {
         <h2>${escapeHtml(person.name)}</h2>
         <p class="role">${escapeHtml(person.job)}</p>
         <div class="footer">
-          <div class="meta">
-            <span class="label">Localização</span>
-            <p>${escapeHtml(person.location)}</p>
+          <div class="agency">
+            <span class="label">Agência</span>
+            <p>${escapeHtml(agency)}</p>
           </div>
           ${linkedin}
         </div>

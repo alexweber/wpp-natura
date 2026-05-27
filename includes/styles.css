@@ -271,7 +271,7 @@ body.is-targeting .target-crosshair {
   overflow-wrap: anywhere;
 }
 
-.person-card .meta {
+.person-card .agency {
   flex: 1 1 auto;
   min-width: 0;
   font-size: 16px;
