@@ -79,7 +79,7 @@ const map = new maplibregl.Map({
   container: "map",
   style: neutralMapStyle,
   center: [12, 18],
-  zoom: 1.25,
+  zoom: 2,
   minZoom: 1,
   maxZoom: 9,
   maxBounds: worldBounds,
